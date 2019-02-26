@@ -551,7 +551,7 @@ document.getElementById('btn-remove').addEventListener('click',function(){
     document.getElementById('input-panel').style.display = 'none';
     document.getElementById('reset').style.display = 'block';
     var num = parseInt(document.getElementById('input-num').value);
-    
+
     scene.registerBeforeRender(function() {
         camera.alpha += 0.005;
     });
