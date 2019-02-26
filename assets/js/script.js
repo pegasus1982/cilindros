@@ -300,19 +300,19 @@ function checkCilindro_01(num){
         if(num > 10)
         {
             //check section
-            if(loadedModel[0][i].name == 'section-01') addSectionAnimation(loadedModel[0][i],90);
-            if(loadedModel[0][i].name == 'section-02') addSectionAnimation(loadedModel[0][i],48);
+            if(loadedModel[0][i].name == 'section-01') addSectionAnimation(loadedModel[0][i],60);
+            if(loadedModel[0][i].name == 'section-02') addSectionAnimation(loadedModel[0][i],32);
 
             if(loadedModel[0][i].name.includes('tube-') && !loadedModel[0][i].name.includes('tube-sticker')){
                 var tubeNum = parseInt(loadedModel[0][i].name.substring(5,7));
-                if(tubeNum < 12) addSectionAnimation(loadedModel[0][i],90);
-                else addSectionAnimation(loadedModel[0][i],48);
+                if(tubeNum < 12) addSectionAnimation(loadedModel[0][i],60);
+                else addSectionAnimation(loadedModel[0][i],32);
             }
 
             if(loadedModel[0][i].name.includes('tube-sticker-')){
                 var stickerNum = parseInt(loadedModel[0][i].name.substring(14,17));
-                if(stickerNum < 12) addSectionAnimation(loadedModel[0][i],90);
-                else addSectionAnimation(loadedModel[0][i],48);
+                if(stickerNum < 12) addSectionAnimation(loadedModel[0][i],60);
+                else addSectionAnimation(loadedModel[0][i],32);
             }
 
             //check tube
@@ -357,13 +357,13 @@ function checkCilindro_02(num){
         if(num > 6)
         {
             //check section
-            if(loadedModel[1][i].name == 'section-001') addSectionAnimation(loadedModel[1][i],90);
-            if(loadedModel[1][i].name == 'section-002') addSectionAnimation(loadedModel[1][i],32);
+            if(loadedModel[1][i].name == 'section-001') addSectionAnimation(loadedModel[1][i],60);
+            if(loadedModel[1][i].name == 'section-002') addSectionAnimation(loadedModel[1][i],26);
 
             if(loadedModel[1][i].name.includes('sticker-')){
                 var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
-                if(tubeNum <= 6) addSectionAnimation(loadedModel[1][i],90);
-                else addSectionAnimation(loadedModel[1][i],32);
+                if(tubeNum <= 6) addSectionAnimation(loadedModel[1][i],60);
+                else addSectionAnimation(loadedModel[1][i],26);
 
                 if(tubeNum == num){
                     let tmpModel = loadedModel[1][i];
