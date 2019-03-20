@@ -620,7 +620,7 @@ window.addEventListener('resize', function(){
 //     }
 // }
 
-document.getElementById('btn-remove').addEventListener('click',function(){
+document.getElementById('btn-find').addEventListener('click',function(){
     // document.getElementById('input-panel').style.display = 'none';
     // document.getElementById('reset').style.display = 'block';
     // var num = parseInt(document.getElementById('input-num').value);

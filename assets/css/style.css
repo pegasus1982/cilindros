@@ -27,17 +27,18 @@ html, body {
     padding-bottom: 1rem;
 }
 
-input{
+.num-input{
     min-width: 100px;
     max-width: 200px;
 }
 
-button{
-    width: 100%;
-}
-
 label{
     color: white;
+    min-width: 130px;
+    display: inline-block;
+}
+button{
+    width: 100%;
 }
 
 #input-panel{
