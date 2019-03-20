@@ -57,7 +57,23 @@ var createScene = function(){
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z += 400;
-                
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    console.log(newMeshes[i])
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
             }
         });
     }
@@ -70,7 +86,23 @@ var createScene = function(){
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z -= 400;
-                
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    console.log(newMeshes[i])
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
             }
         });
     }
@@ -83,7 +115,23 @@ var createScene = function(){
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z -= 133;
-                
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    console.log(newMeshes[i])
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
             }
         });
     }
@@ -96,7 +144,23 @@ var createScene = function(){
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 350 - 300;
                 newMeshes[i].position.z += 133;
-                
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    console.log(newMeshes[i])
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
             }
         });
     }
