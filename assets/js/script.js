@@ -54,6 +54,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[0][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-01.babylon",scene, function(newMeshes){
+            cilindroList_01.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z += 400;
@@ -63,7 +64,6 @@ var createScene = function(){
                     var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
                     materialGround.diffuseTexture = textureGround;
 
-                    console.log(newMeshes[i])
                     newMeshes[i].material = materialGround;
                     newMeshes[i].material.diffuseTexture.uScale = 0.01;
                     newMeshes[i].material.diffuseTexture.vScale = 0.01;
@@ -83,6 +83,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[1][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
+            cilindroList_02.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z -= 400;
@@ -92,7 +93,6 @@ var createScene = function(){
                     var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
                     materialGround.diffuseTexture = textureGround;
 
-                    console.log(newMeshes[i])
                     newMeshes[i].material = materialGround;
                     newMeshes[i].material.diffuseTexture.uScale = 0.01;
                     newMeshes[i].material.diffuseTexture.vScale = 0.01;
@@ -112,6 +112,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[2][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
+            cilindroList_03.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z -= 133;
@@ -121,7 +122,6 @@ var createScene = function(){
                     var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
                     materialGround.diffuseTexture = textureGround;
 
-                    console.log(newMeshes[i])
                     newMeshes[i].material = materialGround;
                     newMeshes[i].material.diffuseTexture.uScale = 0.01;
                     newMeshes[i].material.diffuseTexture.vScale = 0.01;
@@ -141,6 +141,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[3][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
+            cilindroList_04.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 350 - 300;
                 newMeshes[i].position.z += 133;
@@ -150,7 +151,6 @@ var createScene = function(){
                     var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
                     materialGround.diffuseTexture = textureGround;
 
-                    console.log(newMeshes[i])
                     newMeshes[i].material = materialGround;
                     newMeshes[i].material.diffuseTexture.uScale = 0.01;
                     newMeshes[i].material.diffuseTexture.vScale = 0.01;
@@ -620,21 +620,21 @@ window.addEventListener('resize', function(){
 //     }
 // }
 
-// document.getElementById('btn-remove').addEventListener('click',function(){
-//     document.getElementById('input-panel').style.display = 'none';
-//     document.getElementById('reset').style.display = 'block';
-//     var num = parseInt(document.getElementById('input-num').value);
+document.getElementById('btn-remove').addEventListener('click',function(){
+    // document.getElementById('input-panel').style.display = 'none';
+    // document.getElementById('reset').style.display = 'block';
+    // var num = parseInt(document.getElementById('input-num').value);
 
-//     scene.registerBeforeRender(function() {
-//         camera.alpha += 0.005;
-//     });
+    // scene.registerBeforeRender(function() {
+    //     camera.alpha += 0.005;
+    // });
 
-//     checkCilindro_01(num);
-//     checkCilindro_02(num);
-//     checkCilindro_03(num);
-//     checkCilindro_04(num);
-// })
+    // checkCilindro_01(num);
+    // checkCilindro_02(num);
+    // checkCilindro_03(num);
+    // checkCilindro_04(num);
+})
 
-// document.getElementById('btn-reset').addEventListener('click',function(){
-//     location.reload();
-// })
+document.getElementById('btn-reset').addEventListener('click',function(){
+    location.reload();
+})
