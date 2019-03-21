@@ -24,7 +24,7 @@ var cilindroList_01 = [],
     cilindroList_02 = [],
     cilindroList_03 = [],
     cilindroList_04 = [];
-
+let lines = [];
 let n_HighlightTimeCount = 0;
 
 var highlight;
@@ -299,77 +299,81 @@ winkingTimerCallback();
 function addIlluminateAnimation(model, index){
     highlight.addMesh(model, BABYLON.Color3.Red());
 
-    // if(index == 0)
-    // {
-    //     if(model.name.includes('tube-') && !model.name.includes('tube-sticker')){
-    //         label_01.isVisible = true;
-    //         var line = new BABYLON.GUI.Line();
-    //         line.alpha = 0.8;
-    //         line.lineWidth = 3;
-    //         line.dash = [5, 10];
-    //         advancedTexture.addControl(line); 
-    //         line.linkWithMesh(model);
-    //         line.connectedControl = label_01;
+    if(index == 0)
+    {
+        if(model.name.includes('tube-') && !model.name.includes('tube-sticker')){
+            label_01.isVisible = true;
+            var line = new BABYLON.GUI.Line();
+            line.alpha = 0.8;
+            line.lineWidth = 1;
+            line.dash = [5, 10];
+            advancedTexture.addControl(line); 
+            line.linkWithMesh(model);
+            line.connectedControl = label_01;
+            lines.push(line);
     
-    //         var text1 = new BABYLON.GUI.TextBlock();
-    //         text1.text =    "Nombre : xxxx\n"+
-    //                         "Tiempo  : xxxx\n"+
-    //                         "Estado   : ok   ";
-    //         text1.color = "white";
-    //         label_01.addControl(text1);
-    //     }
-    // }
-    // else if(index == 1){
-    //     label_02.isVisible = true;
-    //     var line = new BABYLON.GUI.Line();
-    //     line.alpha = 0.8;
-    //     line.lineWidth = 3;
-    //     line.dash = [5, 10];
-    //     advancedTexture.addControl(line); 
-    //     line.linkWithMesh(model);
-    //     line.connectedControl = label_02;
+            // var text1 = new BABYLON.GUI.TextBlock();
+            // text1.text =    "Nombre : xxxx\n"+
+            //                 "Tiempo  : xxxx\n"+
+            //                 "Estado   : ok   ";
+            // text1.color = "white";
+            // label_01.addControl(text1);
+        }
+    }
+    else if(index == 1){
+        label_02.isVisible = true;
+        var line = new BABYLON.GUI.Line();
+        line.alpha = 0.8;
+        line.lineWidth = 1;
+        line.dash = [5, 10];
+        advancedTexture.addControl(line); 
+        line.linkWithMesh(model);
+        line.connectedControl = label_02;
+        lines.push(line);
 
-    //     var text1 = new BABYLON.GUI.TextBlock();
-    //     text1.text =    "Nombre : xxxx\n"+
-    //                     "Tiempo  : xxxx\n"+
-    //                     "Estado   : ok   ";
-    //     text1.color = "white";
-    //     label_02.addControl(text1);
-    // }
-    // else if(index == 2){
-    //     label_03.isVisible = true;
-    //     var line = new BABYLON.GUI.Line();
-    //     line.alpha = 0.8;
-    //     line.lineWidth = 3;
-    //     line.dash = [5, 10];
-    //     advancedTexture.addControl(line); 
-    //     line.linkWithMesh(model);
-    //     line.connectedControl = label_03;
+        // var text1 = new BABYLON.GUI.TextBlock();
+        // text1.text =    "Nombre : xxxx\n"+
+        //                 "Tiempo  : xxxx\n"+
+        //                 "Estado   : ok   ";
+        // text1.color = "white";
+        // label_02.addControl(text1);
+    }
+    else if(index == 2){
+        label_03.isVisible = true;
+        var line = new BABYLON.GUI.Line();
+        line.alpha = 0.8;
+        line.lineWidth = 1;
+        line.dash = [5, 10];
+        advancedTexture.addControl(line); 
+        line.linkWithMesh(model);
+        line.connectedControl = label_03;
+        lines.push(line);
 
-    //     var text1 = new BABYLON.GUI.TextBlock();
-    //     text1.text =    "Nombre : xxxx\n"+
-    //                     "Tiempo  : xxxx\n"+
-    //                     "Estado   : ok   ";
-    //     text1.color = "white";
-    //     label_03.addControl(text1);
-    // }
-    // else if(index == 3){
-    //     label_04.isVisible = true;
-    //     var line = new BABYLON.GUI.Line();
-    //     line.alpha = 0.8;
-    //     line.lineWidth = 3;
-    //     line.dash = [5, 10];
-    //     advancedTexture.addControl(line); 
-    //     line.linkWithMesh(model);
-    //     line.connectedControl = label_04;
+        // var text1 = new BABYLON.GUI.TextBlock();
+        // text1.text =    "Nombre : xxxx\n"+
+        //                 "Tiempo  : xxxx\n"+
+        //                 "Estado   : ok   ";
+        // text1.color = "white";
+        // label_03.addControl(text1);
+    }
+    else if(index == 3){
+        label_04.isVisible = true;
+        var line = new BABYLON.GUI.Line();
+        line.alpha = 0.8;
+        line.lineWidth = 1;
+        line.dash = [5, 10];
+        advancedTexture.addControl(line); 
+        line.linkWithMesh(model);
+        line.connectedControl = label_04;
+        lines.push(line);
 
-    //     var text1 = new BABYLON.GUI.TextBlock();
-    //     text1.text =    "Nombre : xxxx\n"+
-    //                     "Tiempo  : xxxx\n"+
-    //                     "Estado   : ok   ";
-    //     text1.color = "white";
-    //     label_04.addControl(text1);
-    // }
+        // var text1 = new BABYLON.GUI.TextBlock();
+        // text1.text =    "Nombre : xxxx\n"+
+        //                 "Tiempo  : xxxx\n"+
+        //                 "Estado   : ok   ";
+        // text1.color = "white";
+        // label_04.addControl(text1);
+    }
 }
 
 function checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant){
@@ -475,6 +479,7 @@ function checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
     numCylinder = parseInt(numCylinder);
     numQuadrant = parseInt(numQuadrant);
     if(isNaN(numTube) != true) return;
+    if(bChecked_Quadrant == false && bChecked_Tube == false) return;
     console.log('cilindro 3 search started');
     for(var i in cilindroList_03){
         if(bChecked_Cylinder == true){
@@ -503,6 +508,7 @@ function checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
     numCylinder = parseInt(numCylinder);
     numQuadrant = parseInt(numQuadrant);
     if(isNaN(numTube)!=true) return;
+    if(bChecked_Quadrant == false && bChecked_Tube == false) return;
     console.log('search cilindro 4 started');
     for(var i in cilindroList_04){
         if(bChecked_Cylinder == true){
@@ -521,7 +527,7 @@ function checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
                 if(bChecked_Tube == true && model[j].name.includes(numTube) != true) continue;
                 let tmpModel = model[j];
                 addSectionAnimation(model[j],30);
-                addIlluminateAnimation(tmpModel,2);
+                addIlluminateAnimation(tmpModel,3);
             }
         }
     }
@@ -578,6 +584,17 @@ function backupInitialStatus(){
 }
 
 function restoreInitialStatus(){
+    //remove lines
+    for(var i in lines){
+        lines[i].dispose();
+    }
+    lines = [];
+    //hide labels
+    label_01.isVisible = false;
+    label_02.isVisible = false;
+    label_03.isVisible = false;
+    label_04.isVisible = false;
+    //set initial positions
     var index = 0;
     let pos_cylinder_01 = initialStatus[0];
     let pos_cylinder_02 = initialStatus[1];
