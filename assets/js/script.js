@@ -619,6 +619,10 @@ function restoreInitialStatus(){
             index++;
         }
     }
+
+    for(var i in highlight._meshes){
+        highlight.removeMesh(highlight._meshes[i].mesh)
+    }
 }
 
 document.getElementById('btn-find').addEventListener('click',function(){
@@ -646,6 +650,7 @@ document.getElementById('btn-find').addEventListener('click',function(){
 })
 
 document.getElementById('btn-reset').addEventListener('click',function(){
-    // location.reload();
+    document.getElementById('input-panel').style.display = 'block';
+    document.getElementById('reset').style.display = 'none';
     restoreInitialStatus();
 })
