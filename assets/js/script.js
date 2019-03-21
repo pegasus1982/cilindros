@@ -107,44 +107,15 @@ var createScene = function(){
     //     });
     // }
 
-    //load cilindro 3
-    for(var index = 0 ; index < quantities[2].length ; index++){
-        let itemIndex = index;
-        let num = quantities[2][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
-            cilindroList_03.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z -= 133;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
-                    
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
-
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
-                    
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-        });
-    }
-
-    // //load cilindro 4
-    // for(var index = 0 ; index < quantities[3].length ; index++){
+    // //load cilindro 3
+    // for(var index = 0 ; index < quantities[2].length ; index++){
     //     let itemIndex = index;
-    //     let num = quantities[3][itemIndex];
-    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
-    //         cilindroList_04.push(newMeshes);
+    //     let num = quantities[2][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
+    //         cilindroList_03.push(newMeshes);
     //         for(var i in newMeshes){
-    //             newMeshes[i].position.x += itemIndex * 350 - 300;
-    //             newMeshes[i].position.z += 133;
+    //             newMeshes[i].position.x += itemIndex * 300 - 300;
+    //             newMeshes[i].position.z -= 133;
     //             if(newMeshes[i].name == "cilindro-num-label"){
     //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
@@ -164,6 +135,35 @@ var createScene = function(){
     //         }
     //     });
     // }
+
+    //load cilindro 4
+    for(var index = 0 ; index < quantities[3].length ; index++){
+        let itemIndex = index;
+        let num = quantities[3][itemIndex];
+        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
+            cilindroList_04.push(newMeshes);
+            for(var i in newMeshes){
+                newMeshes[i].position.x += itemIndex * 350 - 300;
+                newMeshes[i].position.z += 133;
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
+            }
+        });
+    }
 
     advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("ui1");
 
@@ -486,86 +486,33 @@ function checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
     }
 }
 
-// function checkCilindro_04(num){
-//     if(num <= 0 || num > 20) return;
-//     console.log('num ',num)
-//     for(var i in loadedModel[3]){
-//         if(num <= 4){
-//             if(loadedModel[3][i].name.includes('Tube-')){
-//                 var tubeNum = parseInt(loadedModel[3][i].name.substring(5,8));
-//                 if(tubeNum == num){
-//                     let tmpModel = loadedModel[3][i];
-//                     addIlluminateAnimation(tmpModel,3);
-//                 }
-//             }
-//         }
-//         else{
-//             if(num > 4 && num <= 8){
-//                 if(loadedModel[3][i].name == 'section-001') addSectionAnimation(loadedModel[3][i],120);
-//                 if(loadedModel[3][i].name == 'section-002') addSectionAnimation(loadedModel[3][i],29);
-//                 if(loadedModel[3][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[3][i].name.substring(5,8));
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[3][i],120);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[3][i],29);
-//                 }
-//             }
-//             else if(num > 8 && num <= 12){
-//                 if(loadedModel[3][i].name == 'section-001') addSectionAnimation(loadedModel[3][i],160);
-//                 if(loadedModel[3][i].name == 'section-002') addSectionAnimation(loadedModel[3][i],140);
-//                 if(loadedModel[3][i].name == 'section-003') addSectionAnimation(loadedModel[3][i],51);
-//                 if(loadedModel[3][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[3][i].name.substring(5,8));
-                    
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[3][i],160);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[3][i],140);
-
-//                     else if(tubeNum > 8 && tubeNum <= 12) addSectionAnimation(loadedModel[3][i],51);
-//                 }
-//             }
-//             else if(num > 12 && num <= 16){
-//                 if(loadedModel[3][i].name == 'section-001') addSectionAnimation(loadedModel[3][i],210);
-//                 if(loadedModel[3][i].name == 'section-002') addSectionAnimation(loadedModel[3][i],190);
-//                 if(loadedModel[3][i].name == 'section-003') addSectionAnimation(loadedModel[3][i],170);
-//                 if(loadedModel[3][i].name == 'section-004') addSectionAnimation(loadedModel[3][i],75);
-//                 if(loadedModel[3][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[3][i].name.substring(5,8));
-                    
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[3][i],210);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[3][i],190);
-//                     else if(tubeNum > 8 && tubeNum <= 12) addSectionAnimation(loadedModel[3][i],170);
-
-//                     else if(tubeNum > 12 && tubeNum <= 16) addSectionAnimation(loadedModel[3][i],75);
-//                 }
-//             }
-//             else if(num > 16 && num <= 20){
-//                 if(loadedModel[3][i].name == 'section-001') addSectionAnimation(loadedModel[3][i],240);
-//                 if(loadedModel[3][i].name == 'section-002') addSectionAnimation(loadedModel[3][i],220);
-//                 if(loadedModel[3][i].name == 'section-003') addSectionAnimation(loadedModel[3][i],200);
-//                 if(loadedModel[3][i].name == 'section-004') addSectionAnimation(loadedModel[3][i],180);
-//                 if(loadedModel[3][i].name == 'section-005') addSectionAnimation(loadedModel[3][i],100);
-//                 if(loadedModel[3][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[3][i].name.substring(5,8));
-                    
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[3][i],240);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[3][i],220);
-//                     else if(tubeNum > 8 && tubeNum <= 12) addSectionAnimation(loadedModel[3][i],200);
-//                     else if(tubeNum > 12 && tubeNum <= 16) addSectionAnimation(loadedModel[3][i],180);
-
-//                     else if(tubeNum > 16 && tubeNum <= 20) addSectionAnimation(loadedModel[3][i],100);
-//                 }
-//             }
-//             if(loadedModel[3][i].name.includes('Tube-')){
-//                 var tubeNum = parseInt(loadedModel[3][i].name.substring(5,8));
-//                 if(tubeNum == num){
-//                     var tmpModel = loadedModel[3][i];
-//                     setTimeout(() => {
-//                         addIlluminateAnimation(tmpModel,3);
-//                     }, 1000);
-//                 }
-//             }
-//         }
-//     }
-// }
+function checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant, bChecked_Tube){
+    numCylinder = parseInt(numCylinder);
+    numQuadrant = parseInt(numQuadrant);
+    if(isNaN(numTube)!=true) return;
+    console.log('search cilindro 4 started');
+    for(var i in cilindroList_04){
+        if(bChecked_Cylinder == true){
+            if(quantities[3].indexOf(numCylinder)!=i) continue;
+        }
+        console.log('array index',i);
+        var model = cilindroList_04[i];
+        for(var j in model){
+            if(model[j].name.includes('Tube-')){
+                //check tubes
+                if(bChecked_Quadrant == true){
+                    var tubeNum = parseInt(model[j].name.substring(5,7));
+                    if(tubeNum != numQuadrant) continue;
+                }
+                //color
+                if(bChecked_Tube == true && model[j].name.includes(numTube) != true) continue;
+                let tmpModel = model[j];
+                addSectionAnimation(model[j],30);
+                addIlluminateAnimation(tmpModel,2);
+            }
+        }
+    }
+}
 
 document.getElementById('btn-find').addEventListener('click',function(){
 
@@ -586,9 +533,8 @@ document.getElementById('btn-find').addEventListener('click',function(){
 
     // checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
     // checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
-    // checkCilindro_03(num);
-    // checkCilindro_04(num);
+    // checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
+    checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
 })
 
 document.getElementById('btn-reset').addEventListener('click',function(){
