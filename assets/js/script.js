@@ -78,44 +78,15 @@ var createScene = function(){
     //     });
     // }
 
-    //load cilindro 2
-    for(var index = 0 ; index < quantities[1].length ; index++){
-        let itemIndex = index;
-        let num = quantities[1][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
-            cilindroList_02.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z -= 400;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
-                    
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
-
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
-                    
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-        });
-    }
-
-    // //load cilindro 3
-    // for(var index = 0 ; index < quantities[2].length ; index++){
+    // //load cilindro 2
+    // for(var index = 0 ; index < quantities[1].length ; index++){
     //     let itemIndex = index;
-    //     let num = quantities[2][itemIndex];
-    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
-    //         cilindroList_03.push(newMeshes);
+    //     let num = quantities[1][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
+    //         cilindroList_02.push(newMeshes);
     //         for(var i in newMeshes){
     //             newMeshes[i].position.x += itemIndex * 300 - 300;
-    //             newMeshes[i].position.z -= 133;
+    //             newMeshes[i].position.z -= 400;
     //             if(newMeshes[i].name == "cilindro-num-label"){
     //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
@@ -135,6 +106,35 @@ var createScene = function(){
     //         }
     //     });
     // }
+
+    //load cilindro 3
+    for(var index = 0 ; index < quantities[2].length ; index++){
+        let itemIndex = index;
+        let num = quantities[2][itemIndex];
+        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
+            cilindroList_03.push(newMeshes);
+            for(var i in newMeshes){
+                newMeshes[i].position.x += itemIndex * 300 - 300;
+                newMeshes[i].position.z -= 133;
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
+            }
+        });
+    }
 
     // //load cilindro 4
     // for(var index = 0 ; index < quantities[3].length ; index++){
@@ -456,36 +456,6 @@ function checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
             }
         }
     }
-    // for(var i in loadedModel[1]){
-    //     if(num > 6)
-    //     {
-    //         //check section
-    //         if(loadedModel[1][i].name == 'section-001') addSectionAnimation(loadedModel[1][i],60);
-    //         if(loadedModel[1][i].name == 'section-002') addSectionAnimation(loadedModel[1][i],26);
-
-    //         if(loadedModel[1][i].name.includes('sticker-')){
-    //             var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
-    //             if(tubeNum <= 6) addSectionAnimation(loadedModel[1][i],60);
-    //             else addSectionAnimation(loadedModel[1][i],26);
-
-    //             if(tubeNum == num){
-    //                 let tmpModel = loadedModel[1][i];
-    //                 setTimeout(() => {
-    //                     addIlluminateAnimation(tmpModel,1);
-    //                 }, 1000);
-    //             }
-    //         }
-    //     }
-    //     else{
-    //         if(loadedModel[1][i].name.includes('sticker-')){
-    //             var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
-    //             if(tubeNum == num){
-    //                 let tmpModel = loadedModel[1][i];
-    //                 addIlluminateAnimation(tmpModel,1);
-    //             }
-    //         }
-    //     }
-    // }
 }
 
 // function checkCilindro_03(num){
@@ -668,6 +638,7 @@ document.getElementById('btn-find').addEventListener('click',function(){
 
     // checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
     checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
     // checkCilindro_03(num);
     // checkCilindro_04(num);
 })
