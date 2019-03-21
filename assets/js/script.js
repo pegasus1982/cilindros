@@ -37,6 +37,7 @@ let quantities = [
 ]
 
 let initialStatus = [];
+let pointerPressingInfo;
 
 var createScene = function(){
     scene = new BABYLON.Scene(engine);
@@ -662,6 +663,7 @@ document.getElementById('btn-reset').addEventListener('click',function(){
 
 //select cylinder event dispatcher
 function onPointerDown(evt){
+    if(evt.clientX !== pointerPressingInfo[0] || evt.clientY !== pointerPressingInfo[1]) return;
     var pickInfo = scene.pick(scene.pointerX, scene.pointerY,function(mesh){
         return (mesh.visibility && mesh.name.includes("container"));
     })
@@ -687,4 +689,8 @@ function onPointerDown(evt){
     }
 }
 
-canvas.addEventListener('pointerdown',onPointerDown)
+canvas.addEventListener('pointerdown',function(evt){
+    console.log(evt.clientX, evt.clientY);
+    pointerPressingInfo = [evt.clientX, evt.clientY];
+})
+canvas.addEventListener('pointerup',onPointerDown)
