@@ -26,12 +26,17 @@ var cilindroList_01 = [],
 
 let n_HighlightTimeCount = 0;
 
+var highlight;
+
 let quantities = [
     [7,10,11,13,14,23,30],
     [36,31],
     [1,3,4,5,15,26,28],
     [29,32,34]
 ]
+
+let initialStatus = [];
+
 var createScene = function(){
     scene = new BABYLON.Scene(engine);
     
@@ -229,6 +234,10 @@ var createScene = function(){
 
     assetsManager.load();
 
+    highlight = new BABYLON.HighlightLayer("highlight", scene);
+    highlight.blurHorizontalSize   = 2;
+    highlight.blurVerticalSize     = 2;
+
     return scene;
 }
 
@@ -271,20 +280,18 @@ function highlightTimer(){
 
 highlightTimer();
 
-function winkingTimerCallback(hl){
-    hl.blurHorizontalSize   = n_HighlightTimeCount % 2;
-    hl.blurVerticalSize     = n_HighlightTimeCount % 2;
+function winkingTimerCallback(){
+    highlight.blurHorizontalSize   = n_HighlightTimeCount % 2;
+    highlight.blurVerticalSize     = n_HighlightTimeCount % 2;
     setTimeout(() => {
-        winkingTimerCallback(hl);
+        winkingTimerCallback();
     }, 500);
 }
-function addIlluminateAnimation(model, index){
-    var hl = new BABYLON.HighlightLayer("hl", scene);
-    hl.blurHorizontalSize   = 2;
-    hl.blurVerticalSize     = 2;
-    hl.addMesh(model, BABYLON.Color3.Red());
 
-    winkingTimerCallback(hl);
+winkingTimerCallback();
+
+function addIlluminateAnimation(model, index){
+    highlight.addMesh(model, BABYLON.Color3.Red());
 
     // if(index == 0)
     // {
@@ -514,10 +521,111 @@ function checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
     }
 }
 
+function backupInitialStatus(){
+    var pos_cylinder_01 = [];
+    for(var i in cilindroList_01){
+        for(var j in cilindroList_01[i]){
+            pos_cylinder_01.push(new BABYLON.Vector3(
+                cilindroList_01[i][j].position.x,
+                cilindroList_01[i][j].position.y,
+                cilindroList_01[i][j].position.z
+            ));
+        }
+    }
+    initialStatus.push(pos_cylinder_01);
+
+    var pos_cylinder_02 = [];
+    for(var i in cilindroList_02){
+        for(var j in cilindroList_02[i]){
+            pos_cylinder_02.push(new BABYLON.Vector3(
+                cilindroList_02[i][j].position.x,
+                cilindroList_02[i][j].position.y,
+                cilindroList_02[i][j].position.z
+            ));
+        }
+    }
+    initialStatus.push(pos_cylinder_02);
+
+    var pos_cylinder_03 = [];
+    for(var i in cilindroList_03){
+        for(var j in cilindroList_03[i]){
+            pos_cylinder_03.push(new BABYLON.Vector3(
+                cilindroList_03[i][j].position.x,
+                cilindroList_03[i][j].position.y,
+                cilindroList_03[i][j].position.z
+            ));
+        }
+    }
+    initialStatus.push(pos_cylinder_03);
+
+    var pos_cylinder_04 = [];
+    for(var i in cilindroList_04){
+        for(var j in cilindroList_04[i]){
+            pos_cylinder_04.push(new BABYLON.Vector3(
+                cilindroList_04[i][j].position.x,
+                cilindroList_04[i][j].position.y,
+                cilindroList_04[i][j].position.z
+            ));
+        }
+    }
+    initialStatus.push(pos_cylinder_04);
+}
+
+function restoreInitialStatus(){
+    var index = 0;
+    let pos_cylinder_01 = initialStatus[0];
+    let pos_cylinder_02 = initialStatus[1];
+    let pos_cylinder_03 = initialStatus[2];
+    let pos_cylinder_04 = initialStatus[3];
+
+    for(var i in cilindroList_01){
+        for(var j in cilindroList_01[i]){
+            cilindroList_01[i][j].position.x = pos_cylinder_01[index].x;
+            cilindroList_01[i][j].position.y = pos_cylinder_01[index].y;
+            cilindroList_01[i][j].position.z = pos_cylinder_01[index].z;
+            index++;
+        }
+    }
+
+    index = 0;
+
+    for(var i in cilindroList_02){
+        for(var j in cilindroList_02[i]){
+            cilindroList_02[i][j].position.x = pos_cylinder_02[index].x;
+            cilindroList_02[i][j].position.y = pos_cylinder_02[index].y;
+            cilindroList_02[i][j].position.z = pos_cylinder_02[index].z;
+            index++;
+        }
+    }
+
+    index = 0;
+
+    for(var i in cilindroList_03){
+        for(var j in cilindroList_03[i]){
+            cilindroList_03[i][j].position.x = pos_cylinder_03[index].x;
+            cilindroList_03[i][j].position.y = pos_cylinder_03[index].y;
+            cilindroList_03[i][j].position.z = pos_cylinder_03[index].z;
+            index++;
+        }
+    }
+
+    index = 0;
+
+    for(var i in cilindroList_04){
+        for(var j in cilindroList_04[i]){
+            cilindroList_04[i][j].position.x = pos_cylinder_04[index].x;
+            cilindroList_04[i][j].position.y = pos_cylinder_04[index].y;
+            cilindroList_04[i][j].position.z = pos_cylinder_04[index].z;
+            index++;
+        }
+    }
+}
+
 document.getElementById('btn-find').addEventListener('click',function(){
 
-    // document.getElementById('input-panel').style.display = 'none';
-    // document.getElementById('reset').style.display = 'block';
+    document.getElementById('input-panel').style.display = 'none';
+    document.getElementById('reset').style.display = 'block';
+    backupInitialStatus();
     var bChecked_Cylinder = document.getElementById('check-cylinder').checked;
     var numCylinder = document.getElementById('input-cylinder').value;
 
@@ -538,5 +646,6 @@ document.getElementById('btn-find').addEventListener('click',function(){
 })
 
 document.getElementById('btn-reset').addEventListener('click',function(){
-    location.reload();
+    // location.reload();
+    restoreInitialStatus();
 })
