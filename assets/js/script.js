@@ -6,6 +6,7 @@ var engine = new BABYLON.Engine(canvas, true, { stencil: true });
 
 var scene,
     camera,
+    cameraTarget,
     light1,
     light2,
     light3,
@@ -40,8 +41,12 @@ let initialStatus = [];
 var createScene = function(){
     scene = new BABYLON.Scene(engine);
     
-    camera = new BABYLON.ArcRotateCamera("Camera", 4, 1, 1200, new BABYLON.Vector3(0,30,0), scene);
+    camera = new BABYLON.ArcRotateCamera("Camera", 4, 1, 1200, new BABYLON.Vector3(0,0,0), scene);
+    cameraTarget = BABYLON.Mesh.CreateBox("cameraTarget", 0.5, scene);
+    cameraTarget.position = new BABYLON.Vector3(0,30,0);
     camera.attachControl(canvas, false);
+    camera.setTarget(cameraTarget);
+    
     camera.upperBetaLimit = 1.57;
     camera.lowerBetaLimit = 0.4;
     
@@ -654,3 +659,32 @@ document.getElementById('btn-reset').addEventListener('click',function(){
     document.getElementById('reset').style.display = 'none';
     restoreInitialStatus();
 })
+
+//select cylinder event dispatcher
+function onPointerDown(evt){
+    var pickInfo = scene.pick(scene.pointerX, scene.pointerY,function(mesh){
+        return (mesh.visibility && mesh.name.includes("container"));
+    })
+    if(pickInfo.hit){
+        camera.setTarget(cameraTarget);
+        var currentMesh = pickInfo.pickedMesh;
+        if(currentMesh.position.equals(cameraTarget.position)) return;
+        var animCTarget = new BABYLON.Animation("anim-camera-target","position",ANIM_DURATION,BABYLON.Animation.ANIMATIONTYPE_VECTOR3);
+        var keys = [];
+        keys.push({
+            frame : 0,
+            value : cameraTarget.position.clone(),
+        });
+        keys.push({
+            frame : ANIM_DURATION,
+            value : currentMesh.position.clone(),
+        })
+
+        animCTarget.setKeys(keys);
+        cameraTarget.animations = [];
+        cameraTarget.animations.push(animCTarget);
+        scene.beginAnimation(cameraTarget, 0, ANIM_DURATION, false);
+    }
+}
+
+canvas.addEventListener('pointerdown',onPointerDown)
