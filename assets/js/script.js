@@ -78,92 +78,92 @@ var createScene = function(){
         });
     }
 
-    //load cilindro 2
-    for(var index = 0 ; index < quantities[1].length ; index++){
-        let itemIndex = index;
-        let num = quantities[1][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
-            cilindroList_02.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z -= 400;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+    // //load cilindro 2
+    // for(var index = 0 ; index < quantities[1].length ; index++){
+    //     let itemIndex = index;
+    //     let num = quantities[1][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
+    //         cilindroList_02.push(newMeshes);
+    //         for(var i in newMeshes){
+    //             newMeshes[i].position.x += itemIndex * 300 - 300;
+    //             newMeshes[i].position.z -= 400;
+    //             if(newMeshes[i].name == "cilindro-num-label"){
+    //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
+    //                 var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+    //                 materialGround.diffuseTexture = textureGround;
 
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+    //                 newMeshes[i].material = materialGround;
+    //                 newMeshes[i].material.diffuseTexture.uScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.vScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+    //                 newMeshes[i].material.diffuseTexture.vOffset = 0.6;
                     
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-        });
-    }
+    //                 //Add text to dynamic texture
+    //                 var font = "bold 250px monospace";
+    //                 textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+    //             }
+    //         }
+    //     });
+    // }
 
-    //load cilindro 3
-    for(var index = 0 ; index < quantities[2].length ; index++){
-        let itemIndex = index;
-        let num = quantities[2][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
-            cilindroList_03.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z -= 133;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+    // //load cilindro 3
+    // for(var index = 0 ; index < quantities[2].length ; index++){
+    //     let itemIndex = index;
+    //     let num = quantities[2][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
+    //         cilindroList_03.push(newMeshes);
+    //         for(var i in newMeshes){
+    //             newMeshes[i].position.x += itemIndex * 300 - 300;
+    //             newMeshes[i].position.z -= 133;
+    //             if(newMeshes[i].name == "cilindro-num-label"){
+    //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
+    //                 var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+    //                 materialGround.diffuseTexture = textureGround;
 
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+    //                 newMeshes[i].material = materialGround;
+    //                 newMeshes[i].material.diffuseTexture.uScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.vScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+    //                 newMeshes[i].material.diffuseTexture.vOffset = 0.6;
                     
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-        });
-    }
+    //                 //Add text to dynamic texture
+    //                 var font = "bold 250px monospace";
+    //                 textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+    //             }
+    //         }
+    //     });
+    // }
 
-    //load cilindro 4
-    for(var index = 0 ; index < quantities[3].length ; index++){
-        let itemIndex = index;
-        let num = quantities[3][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
-            cilindroList_04.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 350 - 300;
-                newMeshes[i].position.z += 133;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+    // //load cilindro 4
+    // for(var index = 0 ; index < quantities[3].length ; index++){
+    //     let itemIndex = index;
+    //     let num = quantities[3][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
+    //         cilindroList_04.push(newMeshes);
+    //         for(var i in newMeshes){
+    //             newMeshes[i].position.x += itemIndex * 350 - 300;
+    //             newMeshes[i].position.z += 133;
+    //             if(newMeshes[i].name == "cilindro-num-label"){
+    //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
+    //                 var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+    //                 materialGround.diffuseTexture = textureGround;
 
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+    //                 newMeshes[i].material = materialGround;
+    //                 newMeshes[i].material.diffuseTexture.uScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.vScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+    //                 newMeshes[i].material.diffuseTexture.vOffset = 0.6;
                     
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-        });
-    }
+    //                 //Add text to dynamic texture
+    //                 var font = "bold 250px monospace";
+    //                 textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+    //             }
+    //         }
+    //     });
+    // }
 
     advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("ui1");
 
@@ -245,183 +245,194 @@ window.addEventListener('resize', function(){
     engine.resize();
 });
 
-// function addSectionAnimation(model,offset){
-//     var animBox = new BABYLON.Animation("anim-"+model.name,"position.y",30,BABYLON.Animation.ANIMATIONTYPE_FLOAT);
-//     var keys = [];
-//     keys.push({
-//         frame : 0,
-//         value : model.position.y,
-//     });
-//     keys.push({
-//         frame : ANIM_DURATION,
-//         value : model.position.y + offset,
-//     })
-//     animBox.setKeys(keys);
-//     model.animations.push(animBox);
-//     scene.beginAnimation(model, 0, ANIM_DURATION, false);
-// }
+function addSectionAnimation(model,offset){
+    var animBox = new BABYLON.Animation("anim-"+model.name,"position.y",30,BABYLON.Animation.ANIMATIONTYPE_FLOAT);
+    var keys = [];
+    keys.push({
+        frame : 0,
+        value : model.position.y,
+    });
+    keys.push({
+        frame : ANIM_DURATION,
+        value : model.position.y + offset,
+    })
+    animBox.setKeys(keys);
+    model.animations.push(animBox);
+    scene.beginAnimation(model, 0, ANIM_DURATION, false);
+}
 
-// function highlightTimer(){
-//     n_HighlightTimeCount++;
-//     n_HighlightTimeCount %= 100;
-//     setTimeout(() => {
-//         highlightTimer();
-//     }, 500);
-// }
+function highlightTimer(){
+    n_HighlightTimeCount++;
+    n_HighlightTimeCount %= 100;
+    setTimeout(() => {
+        highlightTimer();
+    }, 500);
+}
 
-// highlightTimer();
+highlightTimer();
 
-// function winkingTimerCallback(hl){
-//     hl.blurHorizontalSize   = n_HighlightTimeCount % 2;
-//     hl.blurVerticalSize     = n_HighlightTimeCount % 2;
-//     setTimeout(() => {
-//         winkingTimerCallback(hl);
-//     }, 500);
-// }
-// function addIlluminateAnimation(model, index){
-//     var hl = new BABYLON.HighlightLayer("hl", scene);
-//     hl.blurHorizontalSize   = 2;
-//     hl.blurVerticalSize     = 2;
-//     hl.addMesh(model, BABYLON.Color3.Red());
+function winkingTimerCallback(hl){
+    hl.blurHorizontalSize   = n_HighlightTimeCount % 2;
+    hl.blurVerticalSize     = n_HighlightTimeCount % 2;
+    setTimeout(() => {
+        winkingTimerCallback(hl);
+    }, 500);
+}
+function addIlluminateAnimation(model, index){
+    var hl = new BABYLON.HighlightLayer("hl", scene);
+    hl.blurHorizontalSize   = 2;
+    hl.blurVerticalSize     = 2;
+    hl.addMesh(model, BABYLON.Color3.Red());
 
-//     winkingTimerCallback(hl);
+    winkingTimerCallback(hl);
 
-//     if(index == 0)
-//     {
-//         if(model.name.includes('tube-') && !model.name.includes('tube-sticker')){
-//             label_01.isVisible = true;
-//             var line = new BABYLON.GUI.Line();
-//             line.alpha = 0.8;
-//             line.lineWidth = 3;
-//             line.dash = [5, 10];
-//             advancedTexture.addControl(line); 
-//             line.linkWithMesh(model);
-//             line.connectedControl = label_01;
+    // if(index == 0)
+    // {
+    //     if(model.name.includes('tube-') && !model.name.includes('tube-sticker')){
+    //         label_01.isVisible = true;
+    //         var line = new BABYLON.GUI.Line();
+    //         line.alpha = 0.8;
+    //         line.lineWidth = 3;
+    //         line.dash = [5, 10];
+    //         advancedTexture.addControl(line); 
+    //         line.linkWithMesh(model);
+    //         line.connectedControl = label_01;
     
-//             var text1 = new BABYLON.GUI.TextBlock();
-//             text1.text =    "Nombre : xxxx\n"+
-//                             "Tiempo  : xxxx\n"+
-//                             "Estado   : ok   ";
-//             text1.color = "white";
-//             label_01.addControl(text1);
-//         }
-//     }
-//     else if(index == 1){
-//         label_02.isVisible = true;
-//         var line = new BABYLON.GUI.Line();
-//         line.alpha = 0.8;
-//         line.lineWidth = 3;
-//         line.dash = [5, 10];
-//         advancedTexture.addControl(line); 
-//         line.linkWithMesh(model);
-//         line.connectedControl = label_02;
+    //         var text1 = new BABYLON.GUI.TextBlock();
+    //         text1.text =    "Nombre : xxxx\n"+
+    //                         "Tiempo  : xxxx\n"+
+    //                         "Estado   : ok   ";
+    //         text1.color = "white";
+    //         label_01.addControl(text1);
+    //     }
+    // }
+    // else if(index == 1){
+    //     label_02.isVisible = true;
+    //     var line = new BABYLON.GUI.Line();
+    //     line.alpha = 0.8;
+    //     line.lineWidth = 3;
+    //     line.dash = [5, 10];
+    //     advancedTexture.addControl(line); 
+    //     line.linkWithMesh(model);
+    //     line.connectedControl = label_02;
 
-//         var text1 = new BABYLON.GUI.TextBlock();
-//         text1.text =    "Nombre : xxxx\n"+
-//                         "Tiempo  : xxxx\n"+
-//                         "Estado   : ok   ";
-//         text1.color = "white";
-//         label_02.addControl(text1);
-//     }
-//     else if(index == 2){
-//         label_03.isVisible = true;
-//         var line = new BABYLON.GUI.Line();
-//         line.alpha = 0.8;
-//         line.lineWidth = 3;
-//         line.dash = [5, 10];
-//         advancedTexture.addControl(line); 
-//         line.linkWithMesh(model);
-//         line.connectedControl = label_03;
+    //     var text1 = new BABYLON.GUI.TextBlock();
+    //     text1.text =    "Nombre : xxxx\n"+
+    //                     "Tiempo  : xxxx\n"+
+    //                     "Estado   : ok   ";
+    //     text1.color = "white";
+    //     label_02.addControl(text1);
+    // }
+    // else if(index == 2){
+    //     label_03.isVisible = true;
+    //     var line = new BABYLON.GUI.Line();
+    //     line.alpha = 0.8;
+    //     line.lineWidth = 3;
+    //     line.dash = [5, 10];
+    //     advancedTexture.addControl(line); 
+    //     line.linkWithMesh(model);
+    //     line.connectedControl = label_03;
 
-//         var text1 = new BABYLON.GUI.TextBlock();
-//         text1.text =    "Nombre : xxxx\n"+
-//                         "Tiempo  : xxxx\n"+
-//                         "Estado   : ok   ";
-//         text1.color = "white";
-//         label_03.addControl(text1);
-//     }
-//     else if(index == 3){
-//         label_04.isVisible = true;
-//         var line = new BABYLON.GUI.Line();
-//         line.alpha = 0.8;
-//         line.lineWidth = 3;
-//         line.dash = [5, 10];
-//         advancedTexture.addControl(line); 
-//         line.linkWithMesh(model);
-//         line.connectedControl = label_04;
+    //     var text1 = new BABYLON.GUI.TextBlock();
+    //     text1.text =    "Nombre : xxxx\n"+
+    //                     "Tiempo  : xxxx\n"+
+    //                     "Estado   : ok   ";
+    //     text1.color = "white";
+    //     label_03.addControl(text1);
+    // }
+    // else if(index == 3){
+    //     label_04.isVisible = true;
+    //     var line = new BABYLON.GUI.Line();
+    //     line.alpha = 0.8;
+    //     line.lineWidth = 3;
+    //     line.dash = [5, 10];
+    //     advancedTexture.addControl(line); 
+    //     line.linkWithMesh(model);
+    //     line.connectedControl = label_04;
 
-//         var text1 = new BABYLON.GUI.TextBlock();
-//         text1.text =    "Nombre : xxxx\n"+
-//                         "Tiempo  : xxxx\n"+
-//                         "Estado   : ok   ";
-//         text1.color = "white";
-//         label_04.addControl(text1);
-//     }
-// }
+    //     var text1 = new BABYLON.GUI.TextBlock();
+    //     text1.text =    "Nombre : xxxx\n"+
+    //                     "Tiempo  : xxxx\n"+
+    //                     "Estado   : ok   ";
+    //     text1.color = "white";
+    //     label_04.addControl(text1);
+    // }
+}
 
-// function checkCilindro_01(num){
-//     if(num <= 0 || num > 20) return;
+function checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant){
+    numCylinder = parseInt(numCylinder);
+    numTube     = parseInt(numTube);
+    console.log(numCylinder,numTube);
+    // if(num <= 0 || num > 20) return;
+    if((numTube<=0 || numTube>20) || isNaN(numTube)==true) return;
+    console.log('start search');
 
-//     for(var i in loadedModel[0]){
-//         //check num sticker
-//         if(loadedModel[0][i].name.includes('num-'))
-//         {
-//             var tubeNum = parseInt(loadedModel[0][i].name.substring(4,6));
-//             if(tubeNum == ((num>10)?(num-10):num))
-//                 addSectionAnimation(loadedModel[0][i],30)
-//         }
-//         if(num > 10)
-//         {
-//             //check section
-//             if(loadedModel[0][i].name == 'section-01') addSectionAnimation(loadedModel[0][i],60);
-//             if(loadedModel[0][i].name == 'section-02') addSectionAnimation(loadedModel[0][i],32);
+    for(var i in cilindroList_01){
+        if(bChecked_Cylinder == true){
+            if(quantities[0].indexOf(numCylinder)!=i) continue;
+        }
+        console.log('array index',i);
+        let model = cilindroList_01[i];
+        for(var j in model){
+            //check num sticker
+            if(model[j].name.includes('num-')){
+                var stickerNum = parseInt(model[j].name.substring(4,6));
+                if(stickerNum == ((numTube>10)?(numTube-10):numTube))
+                    addSectionAnimation(model[j],30)
+            }
+            if(numTube > 10){
+                //check section
+                //move upper section
+                if(model[j].name == 'section-01') addSectionAnimation(model[j],60);
+                if(model[j].name == 'section-02') addSectionAnimation(model[j],32);
 
-//             if(loadedModel[0][i].name.includes('tube-') && !loadedModel[0][i].name.includes('tube-sticker')){
-//                 var tubeNum = parseInt(loadedModel[0][i].name.substring(5,7));
-//                 if(tubeNum < 12) addSectionAnimation(loadedModel[0][i],60);
-//                 else addSectionAnimation(loadedModel[0][i],32);
-//             }
+                if(model[j].name.includes('tube-') && !model[j].name.includes('tube-sticker')){
+                    var tubeNum = parseInt(model[j].name.substring(5,7));
+                    if(tubeNum < 12) addSectionAnimation(model[j],60);
+                    else addSectionAnimation(model[j],32);
+                }
+    
+                if(model[j].name.includes('tube-sticker-')){
+                    var stickerNum = parseInt(model[j].name.substring(14,17));
+                    if(stickerNum < 12) addSectionAnimation(model[j],60);
+                    else addSectionAnimation(model[j],32);
+                }
 
-//             if(loadedModel[0][i].name.includes('tube-sticker-')){
-//                 var stickerNum = parseInt(loadedModel[0][i].name.substring(14,17));
-//                 if(stickerNum < 12) addSectionAnimation(loadedModel[0][i],60);
-//                 else addSectionAnimation(loadedModel[0][i],32);
-//             }
-
-//             //check tube
-//             if(loadedModel[0][i].name.includes('tube-') && !loadedModel[0][i].name.includes('tube-sticker')){
-//                 var tubeNum = parseInt(loadedModel[0][i].name.substring(5,7));
-//                 if(tubeNum == (num + 1)){
-//                     let tmpModel = loadedModel[0][i];
-//                     setTimeout(() => {
-//                         addIlluminateAnimation(tmpModel,0);
-//                     }, 1000);
-//                 }
-//             }
-//             if(loadedModel[0][i].name.includes('tube-sticker-')){
-//                 var stickerNum = parseInt(loadedModel[0][i].name.substring(14,17));
-//                 if(stickerNum == (num + 1))
-//                 {
-//                     let tmpModel = loadedModel[0][i];
-//                     setTimeout(() => {
-//                         addIlluminateAnimation(tmpModel,0);
-//                     }, 1000);
-//                 }
-//             }
-//         }
-//         else{
-//             //check tube
-//             if(loadedModel[0][i].name.includes('tube-') && !loadedModel[0][i].name.includes('tube-sticker')){
-//                 var tubeNum = parseInt(loadedModel[0][i].name.substring(5,7));
-//                 if(tubeNum == num) addIlluminateAnimation(loadedModel[0][i],0);
-//             }
-//             if(loadedModel[0][i].name.includes('tube-sticker-')){
-//                 var stickerNum = parseInt(loadedModel[0][i].name.substring(14,17));
-//                 if(stickerNum == num) addIlluminateAnimation(loadedModel[0][i],0);
-//             }
-//         }
-//     }
-// }
+                //check tube
+                if(model[j].name.includes('tube-') && !model[j].name.includes('tube-sticker')){
+                    var tubeNum = parseInt(model[j].name.substring(5,7));
+                    if(tubeNum == (numTube + 1)){
+                        let tmpModel = model[j];
+                        setTimeout(() => {
+                            addIlluminateAnimation(tmpModel,0);
+                        }, 1000);
+                    }
+                }
+                if(model[j].name.includes('tube-sticker-')){
+                    var stickerNum = parseInt(model[j].name.substring(14,17));
+                    if(stickerNum == (numTube + 1))
+                    {
+                        let tmpModel = model[j];
+                        setTimeout(() => {
+                            addIlluminateAnimation(tmpModel,0);
+                        }, 1000);
+                    }
+                }
+            }
+            else{
+                //check tube
+                if(model[j].name.includes('tube-') && !model[j].name.includes('tube-sticker')){
+                    var tubeNum = parseInt(model[j].name.substring(5,7));
+                    if(tubeNum == numTube) addIlluminateAnimation(model[j],0);
+                }
+                if(model[j].name.includes('tube-sticker-')){
+                    var stickerNum = parseInt(model[j].name.substring(14,17));
+                    if(stickerNum == numTube) addIlluminateAnimation(model[j],0);
+                }
+            }
+        }
+    }
+}
 
 // function checkCilindro_02(num){
 //     if(num <= 0 || num > 12) return;
@@ -621,15 +632,22 @@ window.addEventListener('resize', function(){
 // }
 
 document.getElementById('btn-find').addEventListener('click',function(){
+
     // document.getElementById('input-panel').style.display = 'none';
     // document.getElementById('reset').style.display = 'block';
-    // var num = parseInt(document.getElementById('input-num').value);
+    var bChecked_Cylinder = document.getElementById('check-cylinder').checked;
+    var numCylinder = document.getElementById('input-cylinder').value;
+
+    var bChecked_Quadrant = document.getElementById('check-quadrant').checked;
+    var numQuadrant = document.getElementById('input-quadrant').value;
+
+    var numTube     = document.getElementById('input-tube').value;
 
     // scene.registerBeforeRender(function() {
     //     camera.alpha += 0.005;
     // });
 
-    // checkCilindro_01(num);
+    checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
     // checkCilindro_02(num);
     // checkCilindro_03(num);
     // checkCilindro_04(num);

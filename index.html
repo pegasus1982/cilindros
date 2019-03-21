@@ -13,24 +13,24 @@
         <div id='input-panel'>
             <div class="input"><!--cylinder-->
                 <span class="checkbox-container">
-                    <input type="checkbox">
+                    <input type="checkbox" id="check-cylinder">
                 </span>
                 <label>Indica un cilindro: </label>
-                <input class="num-input" id="input-cilindro" type="number" min="1" max="4" value="0">
+                <input class="num-input" id="input-cylinder" type="number" min="1" max="50" value="7">
             </div>
             <div class="input"><!--quadrant-->
                 <span class="checkbox-container">
-                    <input type="checkbox">
+                    <input type="checkbox" id="check-quadrant">
                 </span>
                 <label>Indica un cuadrante: </label>
-                <input class="num-input" id="input-termo" type="number" min="0" max="100" value="0">
+                <input class="num-input" id="input-quadrant" type="number" min="0" max="4" value="1">
             </div>
             <div class="input"><!--tube-->
-                <span class="checkbox-container">
-                    <input type="checkbox">
-                </span>
-                <label>Indica un canister: </label>
-                <select class="num-input">
+                <!-- <span class="checkbox-container">
+                    <input type="checkbox" id="check-tube">
+                </span> -->
+                <label style="margin-left : 25px;">Indica un canister: </label>
+                <select id="input-tube" class="num-input">
                     <!--tube number-->
                     <option>1</option>
                     <option>2</option>
@@ -69,6 +69,6 @@
             <button id="btn-reset" style="width : 100px">Reset</button>
         </div>
     </div>
-    <!-- <script src="assets/js/script.js"></script> -->
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
