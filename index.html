@@ -11,26 +11,55 @@
     <canvas id="renderCanvas"></canvas>
     <div class="input-section-container">
         <div id='input-panel'>
-            <div class="input">
+            <div class="input"><!--cylinder-->
                 <span class="checkbox-container">
                     <input type="checkbox">
                 </span>
                 <label>Indica un cilindro: </label>
                 <input class="num-input" id="input-cilindro" type="number" min="1" max="4" value="0">
             </div>
-            <div class="input">
+            <div class="input"><!--quadrant-->
                 <span class="checkbox-container">
                     <input type="checkbox">
                 </span>
-                <label>Indica un termo: </label>
+                <label>Indica un cuadrante: </label>
                 <input class="num-input" id="input-termo" type="number" min="0" max="100" value="0">
             </div>
-            <div class="input">
+            <div class="input"><!--tube-->
                 <span class="checkbox-container">
                     <input type="checkbox">
                 </span>
                 <label>Indica un canister: </label>
-                <input class="num-input" id="input-num" type="number" min="1" max="20" value="8">
+                <select class="num-input">
+                    <!--tube number-->
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                    <option>13</option>
+                    <option>14</option>
+                    <option>15</option>
+                    <option>16</option>
+                    <option>17</option>
+                    <option>18</option>
+                    <option>19</option>
+                    <option>20</option>
+                    <!--color-->
+                    <option>red</option>
+                    <option>blue</option>
+                    <option>green</option>
+                    <option>orange</option>
+                    <option>yellow</option>
+                    <option>white</option>
+                </select>
             </div>
             <div class="input">
                 <button id="btn-find">Buscar</button>
@@ -40,6 +69,6 @@
             <button id="btn-reset" style="width : 100px">Reset</button>
         </div>
     </div>
-    <script src="assets/js/script.js"></script>
+    <!-- <script src="assets/js/script.js"></script> -->
 </body>
 </html>
