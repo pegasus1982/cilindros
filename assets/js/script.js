@@ -49,44 +49,15 @@ var createScene = function(){
     //load babylon model
     var assetsManager = new BABYLON.AssetsManager(scene);
 
-    //load cilindro 1
-    for(var index = 0 ; index < quantities[0].length ; index++){
-        let itemIndex = index;
-        let num = quantities[0][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-01.babylon",scene, function(newMeshes){
-            cilindroList_01.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z += 400;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
-                    
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
-
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
-                    
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-        });
-    }
-
-    // //load cilindro 2
-    // for(var index = 0 ; index < quantities[1].length ; index++){
+    // //load cilindro 1
+    // for(var index = 0 ; index < quantities[0].length ; index++){
     //     let itemIndex = index;
-    //     let num = quantities[1][itemIndex];
-    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
-    //         cilindroList_02.push(newMeshes);
+    //     let num = quantities[0][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-01.babylon",scene, function(newMeshes){
+    //         cilindroList_01.push(newMeshes);
     //         for(var i in newMeshes){
     //             newMeshes[i].position.x += itemIndex * 300 - 300;
-    //             newMeshes[i].position.z -= 400;
+    //             newMeshes[i].position.z += 400;
     //             if(newMeshes[i].name == "cilindro-num-label"){
     //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
@@ -106,6 +77,35 @@ var createScene = function(){
     //         }
     //     });
     // }
+
+    //load cilindro 2
+    for(var index = 0 ; index < quantities[1].length ; index++){
+        let itemIndex = index;
+        let num = quantities[1][itemIndex];
+        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
+            cilindroList_02.push(newMeshes);
+            for(var i in newMeshes){
+                newMeshes[i].position.x += itemIndex * 300 - 300;
+                newMeshes[i].position.z -= 400;
+                if(newMeshes[i].name == "cilindro-num-label"){
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+                    
+                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                    materialGround.diffuseTexture = textureGround;
+
+                    newMeshes[i].material = materialGround;
+                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
+                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+                    
+                    //Add text to dynamic texture
+                    var font = "bold 250px monospace";
+                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+                }
+            }
+        });
+    }
 
     // //load cilindro 3
     // for(var index = 0 ; index < quantities[2].length ; index++){
@@ -434,40 +434,59 @@ function checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
     }
 }
 
-// function checkCilindro_02(num){
-//     if(num <= 0 || num > 12) return;
+function checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant){
+    numCylinder = parseInt(numCylinder);
+    console.log(numCylinder,numTube,numTube.length);
+    // if(num <= 0 || num > 20) return;
+    if(isNaN(numTube)==false) return;
+    console.log('cilindro 2 start search');
 
-//     for(var i in loadedModel[1]){
-//         if(num > 6)
-//         {
-//             //check section
-//             if(loadedModel[1][i].name == 'section-001') addSectionAnimation(loadedModel[1][i],60);
-//             if(loadedModel[1][i].name == 'section-002') addSectionAnimation(loadedModel[1][i],26);
+    for(var i in cilindroList_02){
+        if(bChecked_Cylinder == true){
+            if(quantities[1].indexOf(numCylinder)!=i) continue;
+        }
+        console.log('array index',i);
+        var model = cilindroList_02[i];
+        for(var j in model){
+            if(model[j].name.includes('sticker-') && model[j].name.includes(numTube)){
+                console.log(model[j].name)
+                let tmpModel = model[j];
+                addSectionAnimation(model[j],30);
+                addIlluminateAnimation(tmpModel,1);
+            }
+        }
+    }
+    // for(var i in loadedModel[1]){
+    //     if(num > 6)
+    //     {
+    //         //check section
+    //         if(loadedModel[1][i].name == 'section-001') addSectionAnimation(loadedModel[1][i],60);
+    //         if(loadedModel[1][i].name == 'section-002') addSectionAnimation(loadedModel[1][i],26);
 
-//             if(loadedModel[1][i].name.includes('sticker-')){
-//                 var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
-//                 if(tubeNum <= 6) addSectionAnimation(loadedModel[1][i],60);
-//                 else addSectionAnimation(loadedModel[1][i],26);
+    //         if(loadedModel[1][i].name.includes('sticker-')){
+    //             var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
+    //             if(tubeNum <= 6) addSectionAnimation(loadedModel[1][i],60);
+    //             else addSectionAnimation(loadedModel[1][i],26);
 
-//                 if(tubeNum == num){
-//                     let tmpModel = loadedModel[1][i];
-//                     setTimeout(() => {
-//                         addIlluminateAnimation(tmpModel,1);
-//                     }, 1000);
-//                 }
-//             }
-//         }
-//         else{
-//             if(loadedModel[1][i].name.includes('sticker-')){
-//                 var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
-//                 if(tubeNum == num){
-//                     let tmpModel = loadedModel[1][i];
-//                     addIlluminateAnimation(tmpModel,1);
-//                 }
-//             }
-//         }
-//     }
-// }
+    //             if(tubeNum == num){
+    //                 let tmpModel = loadedModel[1][i];
+    //                 setTimeout(() => {
+    //                     addIlluminateAnimation(tmpModel,1);
+    //                 }, 1000);
+    //             }
+    //         }
+    //     }
+    //     else{
+    //         if(loadedModel[1][i].name.includes('sticker-')){
+    //             var tubeNum = parseInt(loadedModel[1][i].name.substring(8,11));
+    //             if(tubeNum == num){
+    //                 let tmpModel = loadedModel[1][i];
+    //                 addIlluminateAnimation(tmpModel,1);
+    //             }
+    //         }
+    //     }
+    // }
+}
 
 // function checkCilindro_03(num){
 //     if(num <= 0 || num > 20) return;
@@ -647,8 +666,8 @@ document.getElementById('btn-find').addEventListener('click',function(){
     //     camera.alpha += 0.005;
     // });
 
-    checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    // checkCilindro_02(num);
+    // checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
     // checkCilindro_03(num);
     // checkCilindro_04(num);
 })
