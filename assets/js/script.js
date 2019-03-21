@@ -458,86 +458,33 @@ function checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
     }
 }
 
-// function checkCilindro_03(num){
-//     if(num <= 0 || num > 20) return;
-//     console.log('num ',num)
-//     for(var i in loadedModel[2]){
-//         if(num <= 4){
-//             if(loadedModel[2][i].name.includes('Tube-')){
-//                 var tubeNum = parseInt(loadedModel[2][i].name.substring(5,8));
-//                 if(tubeNum == num){
-//                     let tmpModel = loadedModel[2][i];
-//                     addIlluminateAnimation(tmpModel,2);
-//                 }
-//             }
-//         }
-//         else{
-//             if(num > 4 && num <= 8){
-//                 if(loadedModel[2][i].name == 'section-001') addSectionAnimation(loadedModel[2][i],120);
-//                 if(loadedModel[2][i].name == 'section-002') addSectionAnimation(loadedModel[2][i],29);
-//                 if(loadedModel[2][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[2][i].name.substring(5,8));
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[2][i],120);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[2][i],29);
-//                 }
-//             }
-//             else if(num > 8 && num <= 12){
-//                 if(loadedModel[2][i].name == 'section-001') addSectionAnimation(loadedModel[2][i],160);
-//                 if(loadedModel[2][i].name == 'section-002') addSectionAnimation(loadedModel[2][i],140);
-//                 if(loadedModel[2][i].name == 'section-003') addSectionAnimation(loadedModel[2][i],51);
-//                 if(loadedModel[2][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[2][i].name.substring(5,8));
-                    
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[2][i],160);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[2][i],140);
-
-//                     else if(tubeNum > 8 && tubeNum <= 12) addSectionAnimation(loadedModel[2][i],51);
-//                 }
-//             }
-//             else if(num > 12 && num <= 16){
-//                 if(loadedModel[2][i].name == 'section-001') addSectionAnimation(loadedModel[2][i],210);
-//                 if(loadedModel[2][i].name == 'section-002') addSectionAnimation(loadedModel[2][i],190);
-//                 if(loadedModel[2][i].name == 'section-003') addSectionAnimation(loadedModel[2][i],170);
-//                 if(loadedModel[2][i].name == 'section-004') addSectionAnimation(loadedModel[2][i],75);
-//                 if(loadedModel[2][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[2][i].name.substring(5,8));
-                    
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[2][i],210);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[2][i],190);
-//                     else if(tubeNum > 8 && tubeNum <= 12) addSectionAnimation(loadedModel[2][i],170);
-
-//                     else if(tubeNum > 12 && tubeNum <= 16) addSectionAnimation(loadedModel[2][i],75);
-//                 }
-//             }
-//             else if(num > 16 && num <= 20){
-//                 if(loadedModel[2][i].name == 'section-001') addSectionAnimation(loadedModel[2][i],240);
-//                 if(loadedModel[2][i].name == 'section-002') addSectionAnimation(loadedModel[2][i],220);
-//                 if(loadedModel[2][i].name == 'section-003') addSectionAnimation(loadedModel[2][i],200);
-//                 if(loadedModel[2][i].name == 'section-004') addSectionAnimation(loadedModel[2][i],180);
-//                 if(loadedModel[2][i].name == 'section-005') addSectionAnimation(loadedModel[2][i],100);
-//                 if(loadedModel[2][i].name.includes('Tube-')){
-//                     var tubeNum = parseInt(loadedModel[2][i].name.substring(5,8));
-                    
-//                     if(tubeNum <= 4) addSectionAnimation(loadedModel[2][i],240);
-//                     else if(tubeNum > 4 && tubeNum <= 8) addSectionAnimation(loadedModel[2][i],220);
-//                     else if(tubeNum > 8 && tubeNum <= 12) addSectionAnimation(loadedModel[2][i],200);
-//                     else if(tubeNum > 12 && tubeNum <= 16) addSectionAnimation(loadedModel[2][i],180);
-
-//                     else if(tubeNum > 16 && tubeNum <= 20) addSectionAnimation(loadedModel[2][i],100);
-//                 }
-//             }
-//             if(loadedModel[2][i].name.includes('Tube-')){
-//                 var tubeNum = parseInt(loadedModel[2][i].name.substring(5,8));
-//                 if(tubeNum == num){
-//                     var tmpModel = loadedModel[2][i];
-//                     setTimeout(() => {
-//                         addIlluminateAnimation(tmpModel,2);
-//                     }, 1000);
-//                 }
-//             }
-//         }
-//     }
-// }
+function checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant, bChecked_Tube){
+    numCylinder = parseInt(numCylinder);
+    numQuadrant = parseInt(numQuadrant);
+    if(isNaN(numTube) != true) return;
+    console.log('cilindro 3 search started');
+    for(var i in cilindroList_03){
+        if(bChecked_Cylinder == true){
+            if(quantities[2].indexOf(numCylinder)!=i) continue;
+        }
+        console.log('array index',i);
+        var model = cilindroList_03[i];
+        for(var j in model){
+            if(model[j].name.includes('Tube-')){
+                //check tubes
+                if(bChecked_Quadrant == true){
+                    var tubeNum = parseInt(model[j].name.substring(5,8));
+                    if(tubeNum != numQuadrant) continue;
+                }
+                //color
+                if(bChecked_Tube == true && model[j].name.includes(numTube) != true) continue;
+                let tmpModel = model[j];
+                addSectionAnimation(model[j],30);
+                addIlluminateAnimation(tmpModel,2);
+            }
+        }
+    }
+}
 
 // function checkCilindro_04(num){
 //     if(num <= 0 || num > 20) return;
@@ -630,6 +577,7 @@ document.getElementById('btn-find').addEventListener('click',function(){
     var bChecked_Quadrant = document.getElementById('check-quadrant').checked;
     var numQuadrant = document.getElementById('input-quadrant').value;
 
+    var bChecked_Tube = document.getElementById('check-tube').checked;
     var numTube     = document.getElementById('input-tube').value;
 
     // scene.registerBeforeRender(function() {
@@ -637,8 +585,8 @@ document.getElementById('btn-find').addEventListener('click',function(){
     // });
 
     // checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    // checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
     // checkCilindro_03(num);
     // checkCilindro_04(num);
 })
