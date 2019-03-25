@@ -28,8 +28,9 @@ html, body {
 }
 
 .num-input{
-    min-width: 100px;
-    max-width: 200px;
+    /* min-width: 100px;
+    max-width: 200px; */
+    width : 120px;
 }
 
 label{
