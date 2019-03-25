@@ -17,7 +17,11 @@ var advancedTexture;
 var label_01,
     label_02,
     label_03,
-    label_04;
+    label_04,
+    text_01,
+    text_02,
+    text_03,
+    text_04;
 
 var loadedModel = [];
 var cilindroList_01 = [],
@@ -193,6 +197,12 @@ var createScene = function(){
     advancedTexture.addControl(label_01); 
     label_01.isVisible = false;
 
+    text_01 = new BABYLON.GUI.TextBlock();
+    text_01.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+    text_01.paddingLeft = 20;
+    text_01.color = "white";
+    label_01.addControl(text_01);
+
     label_02 = new BABYLON.GUI.Rectangle("label_02");
     label_02.background = "black"
     label_02.alpha = 0.8;
@@ -207,6 +217,12 @@ var createScene = function(){
     label_02.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;    
     advancedTexture.addControl(label_02);
     label_02.isVisible = false;
+
+    text_02 = new BABYLON.GUI.TextBlock();
+    text_02.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+    text_02.paddingLeft = 20;
+    text_02.color = "white";
+    label_02.addControl(text_02);
 
     label_03 = new BABYLON.GUI.Rectangle("label_03");
     label_03.background = "black"
@@ -223,6 +239,12 @@ var createScene = function(){
     advancedTexture.addControl(label_03);
     label_03.isVisible = false;
 
+    text_03 = new BABYLON.GUI.TextBlock();
+    text_03.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+    text_03.paddingLeft = 20;
+    text_03.color = "white";
+    label_03.addControl(text_03);
+
     label_04 = new BABYLON.GUI.Rectangle("label_04");
     label_04.background = "black"
     label_04.alpha = 0.8;
@@ -237,6 +259,12 @@ var createScene = function(){
     label_04.verticalAlignment = BABYLON.GUI.Control.VERTICAL_ALIGNMENT_TOP;    
     advancedTexture.addControl(label_04);
     label_04.isVisible = false;
+
+    text_04 = new BABYLON.GUI.TextBlock();
+    text_04.textHorizontalAlignment = BABYLON.GUI.Control.HORIZONTAL_ALIGNMENT_LEFT;
+    text_04.paddingLeft = 20;
+    text_04.color = "white";
+    label_04.addControl(text_04);
 
     assetsManager.load();
 
@@ -296,7 +324,7 @@ function winkingTimerCallback(){
 
 winkingTimerCallback();
 
-function addIlluminateAnimation(model, index){
+function addIlluminateAnimation(model, index,a,b,c){
     highlight.addMesh(model, BABYLON.Color3.Red());
 
     if(index == 0)
@@ -312,12 +340,9 @@ function addIlluminateAnimation(model, index){
             line.connectedControl = label_01;
             lines.push(line);
     
-            // var text1 = new BABYLON.GUI.TextBlock();
-            // text1.text =    "Nombre : xxxx\n"+
-            //                 "Tiempo  : xxxx\n"+
-            //                 "Estado   : ok   ";
-            // text1.color = "white";
-            // label_01.addControl(text1);
+            text_01.text =  "Cilindro      : "+a+"\n"+
+                            "Cuadrante : "+b+"\n"+
+                            "Canister    : "+c+"   ";
         }
     }
     else if(index == 1){
@@ -331,12 +356,9 @@ function addIlluminateAnimation(model, index){
         line.connectedControl = label_02;
         lines.push(line);
 
-        // var text1 = new BABYLON.GUI.TextBlock();
-        // text1.text =    "Nombre : xxxx\n"+
-        //                 "Tiempo  : xxxx\n"+
-        //                 "Estado   : ok   ";
-        // text1.color = "white";
-        // label_02.addControl(text1);
+        text_02.text =  "Cilindro      : "+a+"\n"+
+                            "Cuadrante : "+b+"\n"+
+                            "Canister    : "+c+"   ";
     }
     else if(index == 2){
         label_03.isVisible = true;
@@ -349,12 +371,9 @@ function addIlluminateAnimation(model, index){
         line.connectedControl = label_03;
         lines.push(line);
 
-        // var text1 = new BABYLON.GUI.TextBlock();
-        // text1.text =    "Nombre : xxxx\n"+
-        //                 "Tiempo  : xxxx\n"+
-        //                 "Estado   : ok   ";
-        // text1.color = "white";
-        // label_03.addControl(text1);
+        text_03.text =  "Cilindro      : "+a+"\n"+
+                            "Cuadrante : "+b+"\n"+
+                            "Canister    : "+c+"   ";
     }
     else if(index == 3){
         label_04.isVisible = true;
@@ -367,12 +386,9 @@ function addIlluminateAnimation(model, index){
         line.connectedControl = label_04;
         lines.push(line);
 
-        // var text1 = new BABYLON.GUI.TextBlock();
-        // text1.text =    "Nombre : xxxx\n"+
-        //                 "Tiempo  : xxxx\n"+
-        //                 "Estado   : ok   ";
-        // text1.color = "white";
-        // label_04.addControl(text1);
+        text_04.text =  "Cilindro      : "+a+"\n"+
+                            "Cuadrante : "+b+"\n"+
+                            "Canister    : "+c+"   ";
     }
 }
 
@@ -421,7 +437,7 @@ function checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
                     if(tubeNum == (numTube + 1)){
                         let tmpModel = model[j];
                         setTimeout(() => {
-                            addIlluminateAnimation(tmpModel,0);
+                            addIlluminateAnimation(tmpModel,0,numCylinder, "XXX",numTube);
                         }, 1000);
                     }
                 }
@@ -431,7 +447,7 @@ function checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
                     {
                         let tmpModel = model[j];
                         setTimeout(() => {
-                            addIlluminateAnimation(tmpModel,0);
+                            addIlluminateAnimation(tmpModel,0,numCylinder, "XXX",numTube);
                         }, 1000);
                     }
                 }
@@ -440,11 +456,11 @@ function checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
                 //check tube
                 if(model[j].name.includes('tube-') && !model[j].name.includes('tube-sticker')){
                     var tubeNum = parseInt(model[j].name.substring(5,7));
-                    if(tubeNum == numTube) addIlluminateAnimation(model[j],0);
+                    if(tubeNum == numTube) addIlluminateAnimation(model[j],0,numCylinder, "XXX",numTube);
                 }
                 if(model[j].name.includes('tube-sticker-')){
                     var stickerNum = parseInt(model[j].name.substring(14,17));
-                    if(stickerNum == numTube) addIlluminateAnimation(model[j],0);
+                    if(stickerNum == numTube) addIlluminateAnimation(model[j],0,numCylinder, "XXX",numTube);
                 }
             }
         }
@@ -469,7 +485,7 @@ function checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
                 console.log(model[j].name)
                 let tmpModel = model[j];
                 addSectionAnimation(model[j],30);
-                addIlluminateAnimation(tmpModel,1);
+                addIlluminateAnimation(tmpModel,1,numCylinder,"XXX",numTube);
             }
         }
     }
@@ -478,9 +494,23 @@ function checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
 function checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant, bChecked_Tube){
     numCylinder = parseInt(numCylinder);
     numQuadrant = parseInt(numQuadrant);
-    if(isNaN(numTube) != true) return;
     if(bChecked_Quadrant == false && bChecked_Tube == false) return;
     console.log('cilindro 3 search started');
+    let tube_char;
+    let tube_num;
+
+    console.log(numTube);
+    numTube = numTube.toLowerCase();
+    console.log(numTube);
+    if((numTube[0] >= 'a' && numTube[0] <= 'z') && (numTube[1] >= '0' && numTube[1] <= '9')){
+        tube_char = numTube[0];
+        tube_num = numTube[1];
+    }
+    else if((numTube[0] >= '0' && numTube[0] <= '9') && (numTube[1] >= 'a' && numTube[1] <= 'z')){
+        tube_char = numTube[1];
+        tube_num = numTube[0];
+    }
+    else return;
     for(var i in cilindroList_03){
         if(bChecked_Cylinder == true){
             if(quantities[2].indexOf(numCylinder)!=i) continue;
@@ -490,15 +520,14 @@ function checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
         for(var j in model){
             if(model[j].name.includes('Tube-')){
                 //check tubes
-                if(bChecked_Quadrant == true){
-                    var tubeNum = parseInt(model[j].name.substring(5,8));
-                    if(tubeNum != numQuadrant) continue;
+                let num_quadrant = parseInt(model[j].name.substring(5,8));
+                let _num = model[j].name.substring(9,10);
+                let char = model[j].name.substring(11,12);
+                if(num_quadrant == numQuadrant && tube_num == _num && tube_char == char){
+                    let tmpModel = model[j];
+                    addSectionAnimation(model[j],30);
+                    addIlluminateAnimation(tmpModel,2,numCylinder, numQuadrant, numTube);
                 }
-                //color
-                if(bChecked_Tube == true && model[j].name.includes(numTube) != true) continue;
-                let tmpModel = model[j];
-                addSectionAnimation(model[j],30);
-                addIlluminateAnimation(tmpModel,2);
             }
         }
     }
@@ -507,9 +536,27 @@ function checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
 function checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder, bChecked_Quadrant, bChecked_Tube){
     numCylinder = parseInt(numCylinder);
     numQuadrant = parseInt(numQuadrant);
-    if(isNaN(numTube)!=true) return;
-    if(bChecked_Quadrant == false && bChecked_Tube == false) return;
+    if(bChecked_Tube == false) return;
     console.log('search cilindro 4 started');
+
+    let tube_char;
+    let tube_num;
+
+    console.log(numTube);
+    numTube = numTube.toLowerCase();
+    console.log(numTube);
+    if((numTube[0] >= 'a' && numTube[0] <= 'z') && (numTube[1] >= '0' && numTube[1] <= '9')){
+        tube_char = numTube[0];
+        tube_num = numTube[1];
+    }
+    else if((numTube[0] >= '0' && numTube[0] <= '9') && (numTube[1] >= 'a' && numTube[1] <= 'z')){
+        tube_char = numTube[1];
+        tube_num = numTube[0];
+    }
+    else return;
+
+    console.log(tube_char, tube_num);
+
     for(var i in cilindroList_04){
         if(bChecked_Cylinder == true){
             if(quantities[3].indexOf(numCylinder)!=i) continue;
@@ -518,16 +565,15 @@ function checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder, 
         var model = cilindroList_04[i];
         for(var j in model){
             if(model[j].name.includes('Tube-')){
-                //check tubes
-                if(bChecked_Quadrant == true){
-                    var tubeNum = parseInt(model[j].name.substring(5,7));
-                    if(tubeNum != numQuadrant) continue;
+                if(bChecked_Tube == true){
+                    var num = model[j].name.substring(5,7);
+                    var char = model[j].name.substring(8,9);
+                    if(parseInt(num) == tube_num && char == tube_char){
+                        let tmpModel = model[j];
+                        addSectionAnimation(model[j],30);
+                        addIlluminateAnimation(tmpModel,3,numCylinder,"XXX",numTube);
+                    }
                 }
-                //color
-                if(bChecked_Tube == true && model[j].name.includes(numTube) != true) continue;
-                let tmpModel = model[j];
-                addSectionAnimation(model[j],30);
-                addIlluminateAnimation(tmpModel,3);
             }
         }
     }
@@ -653,23 +699,41 @@ document.getElementById('btn-find').addEventListener('click',function(){
     document.getElementById('input-panel').style.display = 'none';
     document.getElementById('reset').style.display = 'block';
     backupInitialStatus();
-    var bChecked_Cylinder = document.getElementById('check-cylinder').checked;
+    // var bChecked_Cylinder = document.getElementById('check-cylinder').checked;
+    var bChecked_Cylinder = true;
     var numCylinder = document.getElementById('input-cylinder').value;
 
-    var bChecked_Quadrant = document.getElementById('check-quadrant').checked;
+    // var bChecked_Quadrant = document.getElementById('check-quadrant').checked;
+    var bChecked_Quadrant = true;
     var numQuadrant = document.getElementById('input-quadrant').value;
 
-    var bChecked_Tube = document.getElementById('check-tube').checked;
+    // var bChecked_Tube = document.getElementById('check-tube').checked;
+    var bChecked_Tube = true;
     var numTube     = document.getElementById('input-tube').value;
 
     // scene.registerBeforeRender(function() {
     //     camera.alpha += 0.005;
     // });
 
-    checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
-    checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
+    let colorlist = [
+        'red',
+        'orange',
+        'blue',
+        'green',
+        'yellow',
+        'white'
+    ]
+    //tube is number
+    if(!isNaN(numTube)){
+        checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    }
+    else if(colorlist.includes(numTube)){
+        checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    }
+    else{
+        checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
+        checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
+    }
 })
 
 document.getElementById('btn-reset').addEventListener('click',function(){
