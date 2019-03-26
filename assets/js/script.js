@@ -775,7 +775,6 @@ function onPointerDown(evt){
 }
 
 canvas.addEventListener('pointerdown',function(evt){
-    console.log(evt.clientX, evt.clientY);
     pointerPressingInfo = [evt.clientX, evt.clientY];
 })
 canvas.addEventListener('pointerup',onPointerDown)
