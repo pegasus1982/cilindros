@@ -331,6 +331,10 @@ winkingTimerCallback();
 function addIlluminateAnimation(model, index,a,b,c){
     highlight.addMesh(model, BABYLON.Color3.Red());
 
+    //move camera target
+    cameraTarget.position = model.position.clone();
+    camera.radius = 300;
+
     if(index == 0)
     {
         if(model.name.includes('tube-') && !model.name.includes('tube-sticker')){
@@ -696,6 +700,12 @@ function restoreInitialStatus(){
     for(var i in highlight._meshes){
         highlight.removeMesh(highlight._meshes[i].mesh)
     }
+
+    //reset camera info
+    cameraTarget.position.x = 0;
+    cameraTarget.position.y = 30;
+    cameraTarget.position.z = 0;
+    camera.radius = 1200;
 }
 
 document.getElementById('btn-find').addEventListener('click',function(){
