@@ -69,7 +69,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[0][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-01.babylon",scene, function(newMeshes){
-            cilindroList_01.push(newMeshes);
+            // cilindroList_01.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z += 400;
@@ -90,6 +90,7 @@ var createScene = function(){
                     textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
                 }
             }
+            cilindroList_01[quantities[0].indexOf(num)] = newMeshes;
         });
     }
 
@@ -98,7 +99,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[1][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
-            cilindroList_02.push(newMeshes);
+            // cilindroList_02.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z -= 400;
@@ -119,6 +120,7 @@ var createScene = function(){
                     textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
                 }
             }
+            cilindroList_02[quantities[1].indexOf(num)] = newMeshes;
         });
     }
 
@@ -127,7 +129,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[2][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
-            cilindroList_03.push(newMeshes);
+            // cilindroList_03.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 300 - 300;
                 newMeshes[i].position.z -= 133;
@@ -148,6 +150,7 @@ var createScene = function(){
                     textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
                 }
             }
+            cilindroList_03[quantities[2].indexOf(num)] = newMeshes;
         });
     }
 
@@ -156,7 +159,7 @@ var createScene = function(){
         let itemIndex = index;
         let num = quantities[3][itemIndex];
         BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
-            cilindroList_04.push(newMeshes);
+            // cilindroList_04.push(newMeshes);
             for(var i in newMeshes){
                 newMeshes[i].position.x += itemIndex * 350 - 300;
                 newMeshes[i].position.z += 133;
@@ -177,6 +180,7 @@ var createScene = function(){
                     textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
                 }
             }
+            cilindroList_04[quantities[3].indexOf(num)] = newMeshes;
         });
     }
 
@@ -339,7 +343,7 @@ function addIlluminateAnimation(model, index,a,b,c){
             line.linkWithMesh(model);
             line.connectedControl = label_01;
             lines.push(line);
-    
+
             text_01.text =  "Cilindro      : "+a+"\n"+
                             "Cuadrante : "+b+"\n"+
                             "Canister    : "+c+"   ";
