@@ -332,8 +332,24 @@ function addIlluminateAnimation(model, index,a,b,c){
     highlight.addMesh(model, BABYLON.Color3.Red());
 
     //move camera target
-    cameraTarget.position = model.position.clone();
-    camera.radius = 300;
+    var animCTarget = new BABYLON.Animation("anim-camera-target","position",ANIM_DURATION,BABYLON.Animation.ANIMATIONTYPE_VECTOR3);
+    var keys = [];
+    keys.push({
+        frame : 0,
+        value : cameraTarget.position.clone(),
+    });
+    keys.push({
+        frame : ANIM_DURATION,
+        value : model.position.clone(),
+    })
+
+    animCTarget.setKeys(keys);
+    cameraTarget.animations = [];
+    cameraTarget.animations.push(animCTarget);
+    scene.beginAnimation(cameraTarget, 0, ANIM_DURATION, false);
+    setTimeout(() => {
+        camera.radius = 300;
+    }, 1000);
 
     if(index == 0)
     {
