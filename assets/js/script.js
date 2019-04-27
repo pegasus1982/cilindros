@@ -757,13 +757,13 @@ document.getElementById('btn-find').addEventListener('click',function(){
     if(!isNaN(numTube)){
         checkCilindro_01(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
     }
-    else if(colorlist.includes(numTube)){
-        checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
-    }
-    else{
-        checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
-        checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
-    }
+    // else if(colorlist.includes(numTube)){
+    //     checkCilindro_02(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant);
+    // }
+    // else{
+    //     checkCilindro_03(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
+    //     checkCilindro_04(numCylinder, numQuadrant, numTube, bChecked_Cylinder,bChecked_Quadrant,bChecked_Tube);
+    // }
 })
 
 document.getElementById('btn-reset').addEventListener('click',function(){
