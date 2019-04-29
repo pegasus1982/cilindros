@@ -65,124 +65,130 @@ var createScene = function(){
     var assetsManager = new BABYLON.AssetsManager(scene);
 
     //load cilindro 1
-    for(var index = 0 ; index < quantities[0].length ; index++){
-        let itemIndex = index;
-        let num = quantities[0][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-01.babylon",scene, function(newMeshes){
-            // cilindroList_01.push(newMeshes);
+    // for(var index = 0 ; index < quantities[0].length ; index++){
+    BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-01.babylon",scene, function(newMeshes){
+        for(var index = 0 ; index < quantities[0].length - 1; index++){
+            let itemIndex = index;
+            let num = quantities[0][itemIndex];
+            let clonedMeshes = [];
             for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z += 400;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
-                    
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+                let tmp = newMeshes[i].createInstance(Math.random());
+                tmp.position.x += itemIndex * 300 - 300;
+                tmp.position.z += 400;
+                if(tmp.sourceMesh.name == "cilindro-num-label"){
+                    tmp.sourceMesh.material = null;
+                    var textureGround = new BABYLON.DynamicTexture("dynamic texture"+Math.random(), {width:640, height:570}, scene);        
+                    var materialGround = new BABYLON.StandardMaterial("Mat"+Math.random(), scene);    				
                     materialGround.diffuseTexture = textureGround;
-
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
-                    
+                    tmp.sourceMesh.material = materialGround;
+                    tmp.sourceMesh.material.diffuseTexture.uScale = 0.01;
+                    tmp.sourceMesh.material.diffuseTexture.vScale = 0.01;
+                    tmp.sourceMesh.material.diffuseTexture.uOffset = num<10?0.11:0.21;
+                    tmp.sourceMesh.material.diffuseTexture.vOffset = 0.6;
                     //Add text to dynamic texture
                     var font = "bold 250px monospace";
                     textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
                 }
+                clonedMeshes.push(tmp);
             }
-            cilindroList_01[quantities[0].indexOf(num)] = newMeshes;
-        });
-    }
+            cilindroList_01[quantities[0].indexOf(num)] = clonedMeshes;
+        }
+        for(var i in newMeshes){
+            newMeshes[i].isVisible = false;
+        }
+        console.log(cilindroList_01)
+    });
+    // }
 
-    //load cilindro 2
-    for(var index = 0 ; index < quantities[1].length ; index++){
-        let itemIndex = index;
-        let num = quantities[1][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
-            // cilindroList_02.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z -= 400;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+    // //load cilindro 2
+    // for(var index = 0 ; index < quantities[1].length ; index++){
+    //     let itemIndex = index;
+    //     let num = quantities[1][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-02.babylon",scene, function(newMeshes){
+    //         // cilindroList_02.push(newMeshes);
+    //         for(var i in newMeshes){
+    //             newMeshes[i].position.x += itemIndex * 300 - 300;
+    //             newMeshes[i].position.z -= 400;
+    //             if(newMeshes[i].name == "cilindro-num-label"){
+    //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
+    //                 var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+    //                 materialGround.diffuseTexture = textureGround;
 
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+    //                 newMeshes[i].material = materialGround;
+    //                 newMeshes[i].material.diffuseTexture.uScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.vScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+    //                 newMeshes[i].material.diffuseTexture.vOffset = 0.6;
                     
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-            cilindroList_02[quantities[1].indexOf(num)] = newMeshes;
-        });
-    }
+    //                 //Add text to dynamic texture
+    //                 var font = "bold 250px monospace";
+    //                 textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+    //             }
+    //         }
+    //         cilindroList_02[quantities[1].indexOf(num)] = newMeshes;
+    //     });
+    // }
 
-    //load cilindro 3
-    for(var index = 0 ; index < quantities[2].length ; index++){
-        let itemIndex = index;
-        let num = quantities[2][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
-            // cilindroList_03.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 300 - 300;
-                newMeshes[i].position.z -= 133;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+    // //load cilindro 3
+    // for(var index = 0 ; index < quantities[2].length ; index++){
+    //     let itemIndex = index;
+    //     let num = quantities[2][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-03.babylon",scene, function(newMeshes){
+    //         // cilindroList_03.push(newMeshes);
+    //         for(var i in newMeshes){
+    //             newMeshes[i].position.x += itemIndex * 300 - 300;
+    //             newMeshes[i].position.z -= 133;
+    //             if(newMeshes[i].name == "cilindro-num-label"){
+    //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
+    //                 var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+    //                 materialGround.diffuseTexture = textureGround;
 
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+    //                 newMeshes[i].material = materialGround;
+    //                 newMeshes[i].material.diffuseTexture.uScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.vScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+    //                 newMeshes[i].material.diffuseTexture.vOffset = 0.6;
                     
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-            cilindroList_03[quantities[2].indexOf(num)] = newMeshes;
-        });
-    }
+    //                 //Add text to dynamic texture
+    //                 var font = "bold 250px monospace";
+    //                 textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+    //             }
+    //         }
+    //         cilindroList_03[quantities[2].indexOf(num)] = newMeshes;
+    //     });
+    // }
 
-    //load cilindro 4
-    for(var index = 0 ; index < quantities[3].length ; index++){
-        let itemIndex = index;
-        let num = quantities[3][itemIndex];
-        BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
-            // cilindroList_04.push(newMeshes);
-            for(var i in newMeshes){
-                newMeshes[i].position.x += itemIndex * 350 - 300;
-                newMeshes[i].position.z += 133;
-                if(newMeshes[i].name == "cilindro-num-label"){
-                    var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
+    // //load cilindro 4
+    // for(var index = 0 ; index < quantities[3].length ; index++){
+    //     let itemIndex = index;
+    //     let num = quantities[3][itemIndex];
+    //     BABYLON.SceneLoader.ImportMesh("","assets/models/babylon/","cilindro-04.babylon",scene, function(newMeshes){
+    //         // cilindroList_04.push(newMeshes);
+    //         for(var i in newMeshes){
+    //             newMeshes[i].position.x += itemIndex * 350 - 300;
+    //             newMeshes[i].position.z += 133;
+    //             if(newMeshes[i].name == "cilindro-num-label"){
+    //                 var textureGround = new BABYLON.DynamicTexture("dynamic texture", {width:640, height:570}, scene);
                     
-                    var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
-                    materialGround.diffuseTexture = textureGround;
+    //                 var materialGround = new BABYLON.StandardMaterial("Mat", scene);    				
+    //                 materialGround.diffuseTexture = textureGround;
 
-                    newMeshes[i].material = materialGround;
-                    newMeshes[i].material.diffuseTexture.uScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.vScale = 0.01;
-                    newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
-                    newMeshes[i].material.diffuseTexture.vOffset = 0.6;
+    //                 newMeshes[i].material = materialGround;
+    //                 newMeshes[i].material.diffuseTexture.uScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.vScale = 0.01;
+    //                 newMeshes[i].material.diffuseTexture.uOffset = num<10?0.11:0.21;
+    //                 newMeshes[i].material.diffuseTexture.vOffset = 0.6;
                     
-                    //Add text to dynamic texture
-                    var font = "bold 250px monospace";
-                    textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
-                }
-            }
-            cilindroList_04[quantities[3].indexOf(num)] = newMeshes;
-        });
-    }
+    //                 //Add text to dynamic texture
+    //                 var font = "bold 250px monospace";
+    //                 textureGround.drawText(num.toString(), 10, 300, font, "black", "white", true, true);
+    //             }
+    //         }
+    //         cilindroList_04[quantities[3].indexOf(num)] = newMeshes;
+    //     });
+    // }
 
     advancedTexture = BABYLON.GUI.AdvancedDynamicTexture.CreateFullscreenUI("ui1");
 
